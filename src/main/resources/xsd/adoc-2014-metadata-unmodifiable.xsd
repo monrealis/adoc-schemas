@@ -1,185 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.archyvai.lt/adoc/2014/metadata/unmodifiable" xmlns:amc="http://www.archyvai.lt/adoc/2014/metadata/common"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.archyvai.lt/adoc/2014/metadata/unmodifiable"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.archyvai.lt/adoc/2014/metadata/common" schemaLocation="adoc-2014-metadata-common.xsd" />
-	<xs:element name="metadata" type="MetadataType" />
-	<xs:complexType name="MetadataType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:all>
-					<xs:element name="document" type="DocumentType" minOccurs="0" />
-					<xs:element name="authors" type="AuthorsType" minOccurs="0" />
-					<xs:element name="creation" type="amc:EventType" minOccurs="0" />
-					<xs:element name="recipients" type="RecipientsType" minOccurs="0" />
-					<xs:element name="restrictions" type="RestrictionsType" minOccurs="0" />
-					<xs:element name="registrations" type="RegistrationsType" minOccurs="0" />
-					<xs:element name="receptions" type="ReceptionsType" minOccurs="0" />
-					<xs:element name="signerNotes" type="SignerNotesType" minOccurs="0" />
-					<xs:element name="original_signatures" type="SignaturesType" minOccurs="0" />
-				</xs:all>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="DocumentType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="title" type="xs:string" />
-					<xs:element name="sort" type="xs:string" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="AuthorsType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="author" type="amc:AuthorType" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RecipientsType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="recipient" type="amc:AddresseeType" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RegistrationsType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="registration" type="RegistrationType" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RegistrarType" abstract="true">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="date" type="amc:DateType" />
-					<xs:element name="number" type="xs:string" />
-					<xs:element name="registrar" type="amc:EmployeeType" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RegistrationType">
-		<xs:complexContent>
-			<xs:extension base="RegistrarType">
-				<xs:sequence>
-					<xs:element name="code" type="xs:string" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ReceptionsType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="reception" type="ReceptionType" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="ReceptionType">
-		<xs:complexContent>
-			<xs:extension base="RegistrarType">
-				<xs:sequence>
-					<xs:element name="receiver" type="amc:EntityType" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RestrictionsType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="restriction" type="RestrictionType" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="RestrictionType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="date" type="amc:DateType" />
-					<xs:element name="contentRestriction" type="xs:boolean" minOccurs="0" />
-					<xs:element name="metadataRestriction" type="xs:boolean" minOccurs="0" />
-					<xs:element name="reason" type="xs:string" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="SignaturesType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="signature" type="SignatureType" minOccurs="0" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="SignatureType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="signingTime" type="amc:DateType" />
-					<xs:element name="signingPurpose" type="SigningPurposeType" />
-					<xs:element name="signer" type="amc:EmployeeType" />
-					<xs:element name="signerNotes" minOccurs="0">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="signerNote" type="SignerNoteType" minOccurs="0" maxOccurs="unbounded" />
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="SignerNoteType">
-		<xs:simpleContent>
-			<xs:extension base="xs:string" />
-		</xs:simpleContent>
-	</xs:complexType>
-	<xs:complexType name="SignerNotesType">
-		<xs:complexContent>
-			<xs:extension base="amc:SignableElementType">
-				<xs:sequence>
-					<xs:element name="signerNote" minOccurs="0" maxOccurs="unbounded">
-						<xs:complexType>
-							<xs:simpleContent>
-								<xs:extension base="SignerNoteType">
-									<xs:attribute name="ID" type="xs:ID" use="required" />
-								</xs:extension>
-							</xs:simpleContent>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="SigningPurposeType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="signature" />
-			<xs:enumeration value="confirmation" />
-			<xs:enumeration value="visa" />
-			<xs:enumeration value="conciliation" />
-			<xs:enumeration value="registration" />
-			<xs:enumeration value="registration-of-incomming-documents" />
-			<xs:enumeration value="acknowledgement" />
-			<xs:enumeration value="resolution" />
-			<xs:enumeration value="end-of-execution" />
-			<xs:enumeration value="notarisation" />
-			<xs:enumeration value="copy-certification" />
-			<xs:enumeration value="authenticity" />
-		</xs:restriction>
-	</xs:simpleType>
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.archyvai.lt/adoc/2014/metadata/unmodifiable"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:import namespace="http://www.archyvai.lt/adoc/2014/metadata/common" schemaLocation="adoc-2014-metadata-common.xsd" />
+    <xs:element name="metadata" type="MetadataType" />
+    <xs:complexType name="MetadataType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:all>
+                    <xs:element name="document" type="DocumentType" minOccurs="0" />
+                    <xs:element name="authors" type="AuthorsType" minOccurs="0" />
+                    <xs:element name="creation" type="amc:EventType" minOccurs="0" />
+                    <xs:element name="recipients" type="RecipientsType" minOccurs="0" />
+                    <xs:element name="restrictions" type="RestrictionsType" minOccurs="0" />
+                    <xs:element name="registrations" type="RegistrationsType" minOccurs="0" />
+                    <xs:element name="receptions" type="ReceptionsType" minOccurs="0" />
+                    <xs:element name="signerNotes" type="SignerNotesType" minOccurs="0" />
+                    <xs:element name="original_signatures" type="SignaturesType" minOccurs="0" />
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="DocumentType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="title" type="xs:string" />
+                    <xs:element name="sort" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="AuthorsType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="author" type="amc:AuthorType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RecipientsType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="recipient" type="amc:AddresseeType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RegistrationsType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="registration" type="RegistrationType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RegistrarType" abstract="true">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="date" type="amc:DateType" />
+                    <xs:element name="number" type="xs:string" />
+                    <xs:element name="registrar" type="amc:EmployeeType" minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RegistrationType">
+        <xs:complexContent>
+            <xs:extension base="RegistrarType">
+                <xs:sequence>
+                    <xs:element name="code" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ReceptionsType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="reception" type="ReceptionType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ReceptionType">
+        <xs:complexContent>
+            <xs:extension base="RegistrarType">
+                <xs:sequence>
+                    <xs:element name="receiver" type="amc:EntityType" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RestrictionsType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="restriction" type="RestrictionType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="RestrictionType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="date" type="amc:DateType" />
+                    <xs:element name="contentRestriction" type="xs:boolean" minOccurs="0" />
+                    <xs:element name="metadataRestriction" type="xs:boolean" minOccurs="0" />
+                    <xs:element name="reason" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SignaturesType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="signature" type="SignatureType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SignatureType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="signingTime" type="amc:DateType" />
+                    <xs:element name="signingPurpose" type="SigningPurposeType" />
+                    <xs:element name="signer" type="amc:EmployeeType" />
+                    <xs:element name="signerNotes" minOccurs="0">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="signerNote" type="SignerNoteType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SignerNoteType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string" />
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="SignerNotesType">
+        <xs:complexContent>
+            <xs:extension base="amc:SignableElementType">
+                <xs:sequence>
+                    <xs:element name="signerNote" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:simpleContent>
+                                <xs:extension base="SignerNoteType">
+                                    <xs:attribute name="ID" type="xs:ID" use="required" />
+                                </xs:extension>
+                            </xs:simpleContent>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="SigningPurposeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="signature" />
+            <xs:enumeration value="confirmation" />
+            <xs:enumeration value="visa" />
+            <xs:enumeration value="conciliation" />
+            <xs:enumeration value="registration" />
+            <xs:enumeration value="registration-of-incomming-documents" />
+            <xs:enumeration value="acknowledgement" />
+            <xs:enumeration value="resolution" />
+            <xs:enumeration value="end-of-execution" />
+            <xs:enumeration value="notarisation" />
+            <xs:enumeration value="copy-certification" />
+            <xs:enumeration value="authenticity" />
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>

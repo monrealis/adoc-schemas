@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.archyvai.lt/adoc/2014/metadata/common" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.archyvai.lt/adoc/2014/metadata/common"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:complexType name="EntityType">
-		<xs:sequence>
-			<xs:element name="name" type="xs:string" />
-			<xs:element name="code" type="xs:string" minOccurs="0" />
-			<xs:element name="additionalCode" type="AdditionalCodeType" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="email" type="xs:string" minOccurs="0" />
-			<xs:element name="address" type="xs:string" minOccurs="0" />
-			<xs:element name="individual" type="xs:boolean" />
-		</xs:sequence>
-		<xs:attribute name="ID" type="xs:ID" use="optional" />
-	</xs:complexType>
-	<xs:complexType name="AddresseeType">
-		<xs:complexContent>
-			<xs:restriction base="EntityType">
-				<xs:sequence>
-					<xs:element name="name" type="xs:string" />
-					<xs:element name="code" type="xs:string" minOccurs="0" />
-					<xs:element name="additionalCode" type="AdditionalCodeType" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element name="email" type="xs:string" minOccurs="0" />
-					<xs:element name="address" type="xs:string" minOccurs="0" />
-					<xs:element name="individual" type="xs:boolean" />
-				</xs:sequence>
-				<xs:attribute name="ID" type="xs:ID" use="required" />
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="AuthorType">
-		<xs:complexContent>
-			<xs:restriction base="AddresseeType">
-				<xs:sequence>
-					<xs:element name="name" type="xs:string" />
-					<xs:element name="code" type="xs:string" minOccurs="0" />
-					<xs:element name="additionalCode" type="AdditionalCodeType" minOccurs="0" maxOccurs="unbounded" />
-					<xs:element name="email" type="xs:string" minOccurs="0" />
-					<xs:element name="address" type="xs:string" />
-					<xs:element name="individual" type="xs:boolean" />
-				</xs:sequence>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="EmployeeType">
-		<xs:complexContent>
-			<xs:extension base="EntityType">
-				<xs:sequence>
-					<xs:element name="organizationName" type="xs:string" minOccurs="0" />
-					<xs:element name="positionName" type="xs:string" minOccurs="0" />
-					<xs:element name="structuralSubdivision" type="xs:string" minOccurs="0" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="EventType">
-		<xs:complexContent>
-			<xs:extension base="SignableElementType">
-				<xs:sequence>
-					<xs:element name="date" type="DateType" />
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:simpleType name="ReferenceType">
-		<xs:restriction base="xs:anyURI" />
-	</xs:simpleType>
-	<xs:complexType name="SignableElementType" abstract="true">
-		<xs:attribute name="ID" type="xs:ID" use="required" />
-	</xs:complexType>
-	<xs:simpleType name="DateTimeWithTimeZoneType">
-		<xs:restriction base="xs:dateTime">
-			<xs:pattern value=".+T.+(Z|[+\-].+)" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DateWithTimeZoneType">
-		<xs:restriction base="xs:date">
-			<xs:pattern value=".+[:Z].*" />
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="DateType">
-		<xs:union memberTypes="DateTimeWithTimeZoneType DateWithTimeZoneType" />
-	</xs:simpleType>
-	<xs:complexType name="AdditionalCodeType">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="codeType" type="xs:string" use="required" />
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.archyvai.lt/adoc/2014/metadata/common"
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xs:complexType name="EntityType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="code" type="xs:string" minOccurs="0" />
+            <xs:element name="additionalCode" type="AdditionalCodeType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="email" type="xs:string" minOccurs="0" />
+            <xs:element name="address" type="xs:string" minOccurs="0" />
+            <xs:element name="individual" type="xs:boolean" />
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:ID" use="optional" />
+    </xs:complexType>
+    <xs:complexType name="AddresseeType">
+        <xs:complexContent>
+            <xs:restriction base="EntityType">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" />
+                    <xs:element name="code" type="xs:string" minOccurs="0" />
+                    <xs:element name="additionalCode" type="AdditionalCodeType" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="email" type="xs:string" minOccurs="0" />
+                    <xs:element name="address" type="xs:string" minOccurs="0" />
+                    <xs:element name="individual" type="xs:boolean" />
+                </xs:sequence>
+                <xs:attribute name="ID" type="xs:ID" use="required" />
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="AuthorType">
+        <xs:complexContent>
+            <xs:restriction base="AddresseeType">
+                <xs:sequence>
+                    <xs:element name="name" type="xs:string" />
+                    <xs:element name="code" type="xs:string" minOccurs="0" />
+                    <xs:element name="additionalCode" type="AdditionalCodeType" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="email" type="xs:string" minOccurs="0" />
+                    <xs:element name="address" type="xs:string" />
+                    <xs:element name="individual" type="xs:boolean" />
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="EmployeeType">
+        <xs:complexContent>
+            <xs:extension base="EntityType">
+                <xs:sequence>
+                    <xs:element name="organizationName" type="xs:string" minOccurs="0" />
+                    <xs:element name="positionName" type="xs:string" minOccurs="0" />
+                    <xs:element name="structuralSubdivision" type="xs:string" minOccurs="0" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="EventType">
+        <xs:complexContent>
+            <xs:extension base="SignableElementType">
+                <xs:sequence>
+                    <xs:element name="date" type="DateType" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="ReferenceType">
+        <xs:restriction base="xs:anyURI" />
+    </xs:simpleType>
+    <xs:complexType name="SignableElementType" abstract="true">
+        <xs:attribute name="ID" type="xs:ID" use="required" />
+    </xs:complexType>
+    <xs:simpleType name="DateTimeWithTimeZoneType">
+        <xs:restriction base="xs:dateTime">
+            <xs:pattern value=".+T.+(Z|[+\-].+)" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DateWithTimeZoneType">
+        <xs:restriction base="xs:date">
+            <xs:pattern value=".+[:Z].*" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DateType">
+        <xs:union memberTypes="DateTimeWithTimeZoneType DateWithTimeZoneType" />
+    </xs:simpleType>
+    <xs:complexType name="AdditionalCodeType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="codeType" type="xs:string" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
 </xs:schema>
