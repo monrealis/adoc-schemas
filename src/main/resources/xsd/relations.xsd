@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.archyvai.lt/adoc/2008/relationships" xmlns="http://www.archyvai.lt/adoc/2008/relationships" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+<xs:schema targetNamespace="http://www.archyvai.lt/adoc/2008/relationships" xmlns="http://www.archyvai.lt/adoc/2008/relationships"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    elementFormDefault="qualified">
 
-<xs:element name="Relationships" type="RelationshipsType" />
-<xs:complexType name="RelationshipsType">
-<xs:sequence>
-<xs:element ref="SourcePart" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
+    <xs:element name="Relationships" type="RelationshipsType" />
+    <xs:complexType name="RelationshipsType">
+        <xs:sequence>
+            <xs:element ref="SourcePart" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
 
-<xs:element name="SourcePart" type="SourcePartType" />
-<xs:complexType name="SourcePartType">
-<xs:sequence>
-<xs:element ref="Relationship" maxOccurs="unbounded"/>
-</xs:sequence>
-<xs:attribute name="full-path" type="xs:anyURI" use="required"/>
-</xs:complexType>
+    <xs:element name="SourcePart" type="SourcePartType" />
+    <xs:complexType name="SourcePartType">
+        <xs:sequence>
+            <xs:element ref="Relationship" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="full-path" type="xs:anyURI" use="required" />
+    </xs:complexType>
 
-<xs:element name="Relationship" type="RelationshipType" />
-<xs:complexType name="RelationshipType">
-<xs:sequence>
-<xs:element ref="Element" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-<xs:attribute name="full-path" type="xs:anyURI" use="required"/>
-<xs:attribute name="type"      type="xs:anyURI" use="required"/>
-<xs:attribute name="id"        type="xs:ID"     use="optional"/>
-</xs:complexType>
+    <xs:element name="Relationship" type="RelationshipType" />
+    <xs:complexType name="RelationshipType">
+        <xs:sequence>
+            <xs:element ref="Element" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="full-path" type="xs:anyURI" use="required" />
+        <xs:attribute name="type" type="xs:anyURI" use="required" />
+        <xs:attribute name="id" type="xs:ID" use="optional" />
+    </xs:complexType>
 
-<xs:element name="Element" type="ElementType" />
-<xs:complexType name="ElementType">
-<xs:attribute name="in-source-part" type="xs:boolean" use="required"/>
-<xs:attribute name="ref-id"         type="xs:NCName"  use="required"/>
-</xs:complexType>
+    <xs:element name="Element" type="ElementType" />
+    <xs:complexType name="ElementType">
+        <xs:attribute name="in-source-part" type="xs:boolean" use="required" />
+        <xs:attribute name="ref-id" type="xs:NCName" use="required" />
+    </xs:complexType>
 </xs:schema>
