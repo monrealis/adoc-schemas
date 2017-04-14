@@ -7,4 +7,4 @@ xjc -no-header -d generated -catalog catalog.xml \
 	adoc-2014-metadata-unmodifiable.xsd \
 	adoc-2014-metadata-modifiable.xsd \
 	relations.xsd \
-	ASiC.xsd
+	ts_102918v010201.xsd
