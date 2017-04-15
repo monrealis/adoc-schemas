@@ -41,7 +41,9 @@
                 <configuration>
                     <schemaDirectory>src/main/resources/xsd</schemaDirectory>
                     <catalog>src/main/resources/xsd/catalog.xml</catalog>
-                    <schemaExcludes>xmldsig-core-schema.xsd</schemaExcludes>
+                    <schemaExcludes>
+                        <schemaExclude>xmldsig-core-schema.xsd</schemaExclude>
+                    </schemaExcludes>
                 </configuration>
                 <executions>
                     <execution>
